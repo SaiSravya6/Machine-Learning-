@@ -1,0 +1,31 @@
+# One-Hot Encoding using Python 
+fruits = ["apple", "banana", "mango", "orange"]
+countries = ["india", "usa", "uk", "canada"]
+
+fruit_input = input("Enter a fruit: ").lower()
+country_input = input("Enter a country: ").lower()
+
+print("\nOne-Hot Encoding for Fruit:")
+fruit_encoding = []
+
+for fruit in fruits:
+    if fruit == fruit_input:
+        fruit_encoding.append(1)
+    else:
+        fruit_encoding.append(0)
+
+print(fruits)
+print(fruit_encoding)
+
+
+print("\nOne-Hot Encoding for Country:")
+country_encoding = []
+
+for country in countries:
+    if country == country_input:
+        country_encoding.append(1)
+    else:
+        country_encoding.append(0)
+
+print(countries)
+print(country_encoding)

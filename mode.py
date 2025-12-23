@@ -1,5 +1,3 @@
-# Mode Calculation
-
 numbers = list(map(float, input("Enter numbers separated by space: ").split()))
 
 freq = {}
@@ -15,4 +13,3 @@ if len(modes) == 1:
 else:
     print("Modes =", modes)
 
-\
