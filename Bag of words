@@ -1,0 +1,38 @@
+# Bag of Words implementation using Python 
+
+sentences = [
+    "I like apple",
+    "I like banana",
+    "Apple is sweet"
+]
+
+processed_sentences = []
+for sentence in sentences:
+    processed_sentences.append(sentence.lower())
+
+vocabulary = []
+for sentence in processed_sentences:
+    words = sentence.split()
+    for word in words:
+        if word not in vocabulary:
+            vocabulary.append(word)
+
+print("Vocabulary:", vocabulary)
+
+bow_vectors = []
+
+for sentence in processed_sentences:
+    vector = []
+    words = sentence.split()
+    
+    for vocab_word in vocabulary:
+        if vocab_word in words:
+            vector.append(1)
+        else:
+            vector.append(0)
+    
+    bow_vectors.append(vector)
+
+print("\nBag of Words Representation:")
+for i in range(len(sentences)):
+    print(f"Sentence {i+1}: {bow_vectors[i]}")
