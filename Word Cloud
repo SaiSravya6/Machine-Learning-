@@ -1,0 +1,22 @@
+import pandas as pd
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+
+data = pd.read_csv("C:\Users\LENOVO\Downloads.csv")   
+
+text_data = ""
+for sentence in data["text"]:
+    if isinstance(sentence, str):      
+        text_data += sentence + " "
+
+wordcloud = WordCloud(
+    width=800,
+    height=400,
+    background_color="white"
+).generate(text_data)
+
+plt.figure(figsize=(10,5))
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.show()
