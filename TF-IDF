@@ -1,0 +1,67 @@
+# TF-IDF implementation using Python (without libraries)
+
+# Input documents
+documents = [
+    "I like apple",
+    "I like banana",
+    "Apple is sweet"
+]
+
+# Convert documents to lowercase
+processed_docs = []
+for doc in documents:
+    processed_docs.append(doc.lower())
+
+# Create vocabulary
+vocabulary = []
+for doc in processed_docs:
+    words = doc.split()
+    for word in words:
+        if word not in vocabulary:
+            vocabulary.append(word)
+
+print("Vocabulary:", vocabulary)
+
+# Term Frequency (TF)
+tf = []
+for doc in processed_docs:
+    words = doc.split()
+    doc_tf = {}
+    
+    for word in vocabulary:
+        count = 0
+        for w in words:
+            if w == word:
+                count += 1
+        doc_tf[word] = count / len(words)
+    
+    tf.append(doc_tf)
+
+# Inverse Document Frequency (IDF)
+import math
+idf = {}
+
+for word in vocabulary:
+    doc_count = 0
+    for doc in processed_docs:
+        if word in doc.split():
+            doc_count += 1
+    
+    if doc_count > 0:
+        idf[word] = math.log(len(processed_docs) / doc_count)
+    else:
+        idf[word] = 0
+
+# TF-IDF calculation
+tf_idf = []
+
+for doc_tf in tf:
+    doc_tfidf = {}
+    for word in vocabulary:
+        doc_tfidf[word] = doc_tf[word] * idf[word]
+    tf_idf.append(doc_tfidf)
+
+# Display TF-IDF values
+print("\nTF-IDF Representation:")
+for i in range(len(tf_idf)):
+    print(f"Document {i+1}: {tf_idf[i]}")
