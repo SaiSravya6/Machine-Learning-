@@ -1,0 +1,7 @@
+def ngrams(text, n):
+    words = text.split()
+    return [words[i:i+n] for i in range(len(words)-n+1)]
+
+text = "I love natural language processing"
+
+print(ngrams(text, 2))
