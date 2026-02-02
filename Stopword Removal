@@ -1,0 +1,9 @@
+stopwords = ['is', 'a', 'the', 'and', 'in', 'on']
+
+text = "NLP is a part of artificial intelligence"
+
+words = text.split()
+
+filtered_words = [word for word in words if word.lower() not in stopwords]
+
+print(filtered_words)
