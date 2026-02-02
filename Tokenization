@@ -1,0 +1,5 @@
+text = "Natural Language Processing is fun"
+
+tokens = text.split()
+
+print(tokens)
